@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const empleado_endpoint_1 = __importDefault(require("../endpoints/empleado.endpoint"));
+const empleado_router_1 = __importDefault(require("../routers/empleado.router"));
 class Server {
     constructor() {
         this._initServer = () => {
@@ -13,13 +13,16 @@ class Server {
             });
         };
         this._endPoints = () => {
-            this._app.use('/api/empleados', empleado_endpoint_1.default);
+            this._app.use('/api/empleados', empleado_router_1.default); // Declaramos a partir de aqui que todas las rutas que empiecen con /api/empleados serán manejadas por el empleadoRouter.
+        };
+        this._middlewares = () => {
+            this._app.use(express_1.default.json());
         };
         const envPort = process.env.PORT; // 3000
         this._app = (0, express_1.default)();
         this._port = envPort || '3001';
         this._initServer();
-        this._app.use(express_1.default.json());
+        this._middlewares();
         this._endPoints();
     }
 }
