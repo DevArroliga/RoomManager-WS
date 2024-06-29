@@ -11,9 +11,16 @@ class Server {
                 console.log(`Servidor siendo ejecutado en el puerto ${this._port}`);
             });
         };
+        this._endPoints = () => {
+            this._app.get('/', (req, res) => {
+                res.send('Hola mundo');
+            });
+        };
+        const envPort = process.env.PORT; // 3000
         this._app = (0, express_1.default)();
-        this._port = 3000;
+        this._port = envPort || '3001';
         this._initServer();
+        this._endPoints();
     }
 }
 exports.default = Server;
