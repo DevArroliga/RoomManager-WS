@@ -9,7 +9,6 @@ export default class Connection{
             host: 'localhost',
             dialect: 'mysql'
         })    
-
         this._testConnection();
     }
 
@@ -20,5 +19,9 @@ export default class Connection{
         } catch (error) {
             console.error('No se pudo hacer una conexión a la base de datos:', error);
         }
+    }
+
+    get _sequelizeConnection(){
+        return this._sequelize;
     }
 }

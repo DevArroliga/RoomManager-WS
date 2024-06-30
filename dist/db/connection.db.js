@@ -27,5 +27,8 @@ class Connection {
         });
         this._testConnection();
     }
+    get _sequelizeConnection() {
+        return this._sequelize;
+    }
 }
 exports.default = Connection;

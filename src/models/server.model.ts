@@ -13,7 +13,7 @@ export default class Server {
 
         this._app = express();
         this._port = envPort || '3001';
-        this._connection = new Connection();
+        this._connection = new Connection();        
 
         this._initServer();
         this._middlewares();
