@@ -21,12 +21,12 @@ export default class EmpleadoController {
                 "telefono": "987654321"
             }
         ]
-        res.json({ empleados });
+        res.status(200).json({ empleados });
     }
 
     public getEmpleado = (req: Request, res: Response) => {        
         const { id } = req.params;
-        res.json({
+        res.status(200).json({
             "message": "Empleado encontrado",
             id,
         });
@@ -34,7 +34,7 @@ export default class EmpleadoController {
 
     public createEmpleado = (req: Request, res: Response) => {
         const { body } = req;
-        res.json({
+        res.status(200).json({
             "message": "Empleado creado",
             "statusCode": 200,
             body,

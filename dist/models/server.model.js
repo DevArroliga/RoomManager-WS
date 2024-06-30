@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const empleado_router_1 = __importDefault(require("../routers/empleado.router"));
+const connection_db_1 = __importDefault(require("../db/connection.db"));
 class Server {
     constructor() {
         this._initServer = () => {
@@ -21,6 +22,7 @@ class Server {
         const envPort = process.env.PORT; // 3000
         this._app = (0, express_1.default)();
         this._port = envPort || '3001';
+        this._connection = new connection_db_1.default();
         this._initServer();
         this._middlewares();
         this._endPoints();

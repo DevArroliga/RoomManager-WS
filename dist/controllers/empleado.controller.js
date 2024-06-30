@@ -19,18 +19,18 @@ class EmpleadoController {
                     "telefono": "987654321"
                 }
             ];
-            res.json({ empleados });
+            res.status(200).json({ empleados });
         };
         this.getEmpleado = (req, res) => {
             const { id } = req.params;
-            res.json({
+            res.status(200).json({
                 "message": "Empleado encontrado",
                 id,
             });
         };
         this.createEmpleado = (req, res) => {
             const { body } = req;
-            res.json({
+            res.status(200).json({
                 "message": "Empleado creado",
                 "statusCode": 200,
                 body,
