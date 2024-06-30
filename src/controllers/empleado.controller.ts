@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 
 export default class EmpleadoController {
     constructor() { }
@@ -21,5 +22,22 @@ export default class EmpleadoController {
             }
         ]
         res.json({ empleados });
+    }
+
+    public getEmpleado = (req: Request, res: Response) => {        
+        const { id } = req.params;
+        res.json({
+            "message": "Empleado encontrado",
+            id,
+        });
+    }
+
+    public createEmpleado = (req: Request, res: Response) => {
+        const { body } = req;
+        res.json({
+            "message": "Empleado creado",
+            "statusCode": 200,
+            body,
+        });
     }
 }

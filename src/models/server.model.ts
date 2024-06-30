@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import empleadoRouter from "../routers/empleado.router";
 
 export default class Server {
