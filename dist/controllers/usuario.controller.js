@@ -8,27 +8,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const sequelize_1 = require("sequelize");
-class Connection {
+const usuario_model_1 = __importDefault(require("../models/usuario.model"));
+// import Empleado from '../models/empleado.model';
+class UsuarioController {
     constructor() {
-        this._testConnection = () => __awaiter(this, void 0, void 0, function* () {
+        this.getUsuarios = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
-                yield this._sequelize.authenticate();
-                console.log('La conexión fue realizada exitosamente.');
+                const usuarios = yield usuario_model_1.default.findAll();
+                res.status(200).json({ usuarios });
             }
             catch (error) {
-                console.error('No se pudo hacer una conexión a la base de datos:', error);
+                res.status(500).json({ message: 'Error al obtener usuario', error });
             }
         });
-        this._sequelize = new sequelize_1.Sequelize('room_manager_schema', 'sa', '220631', {
-            host: 'localhost',
-            dialect: 'mysql'
-        });
-        this._testConnection();
-    }
-    get _sequelizeConnection() {
-        return this._sequelize;
     }
 }
-exports.default = Connection;
+exports.default = UsuarioController;

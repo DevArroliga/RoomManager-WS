@@ -5,7 +5,7 @@ export default class Connection{
     private _sequelize: Sequelize;
 
     constructor(){
-        this._sequelize = new Sequelize('room_manager_schema', 'sa', '1234', {
+        this._sequelize = new Sequelize('room_manager_schema','sa','220631', {
             host: 'localhost',
             dialect: 'mysql'
         })    
@@ -24,4 +24,6 @@ export default class Connection{
     get _sequelizeConnection(){
         return this._sequelize;
     }
+    
 }
+
