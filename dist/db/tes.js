@@ -9,26 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// testConnection.js
 const sequelize_1 = require("sequelize");
-class Connection {
-    constructor() {
-        this._testConnection = () => __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this._sequelize.authenticate();
-                console.log('La conexión fue realizada exitosamente.');
-            }
-            catch (error) {
-                console.error('No se pudo hacer una conexión a la base de datos:', error);
-            }
-        });
-        this._sequelize = new sequelize_1.Sequelize('room_manager_schema', 'sa', '220631', {
-            host: 'localhost',
-            dialect: 'mysql'
-        });
-        this._testConnection();
+const sequelize = new sequelize_1.Sequelize('room_manager_schema', 'sa', '220631', {
+    host: 'localhost',
+    dialect: 'mysql'
+});
+const testConnection = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield sequelize.authenticate();
+        console.log('La conexión fue realizada exitosamente.');
     }
-    get _sequelizeConnection() {
-        return this._sequelize;
+    catch (error) {
+        console.error('No se pudo hacer una conexión a la base de datos:', error);
     }
-}
-exports.default = Connection;
+    finally {
+        yield sequelize.close();
+    }
+});
+testConnection();

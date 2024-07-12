@@ -9,7 +9,7 @@ const empleado_validator_1 = require("../validators/empleado.validator");
 const empleadoController = new empleado_controller_1.default();
 const empleadoRouter = (0, express_1.Router)();
 // Rutas del endpoint /api/empleados
-empleadoRouter.get('/', empleadoController.getEmpleados);
+// empleadoRouter.get('/', empleadoController.getEmpleados);
 empleadoRouter.get('/:id', empleadoController.getEmpleado);
 empleadoRouter.post('/', empleado_validator_1.empleadoBody, empleado_validator_1.postValidationErrors, empleadoController.createEmpleado);
 exports.default = empleadoRouter;

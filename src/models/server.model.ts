@@ -1,6 +1,7 @@
 import express from 'express';
 import empleadoRouter from "../routers/empleado.router";
 import Connection from '../db/connection.db';
+import usuarioRouter from '../routers/usuario.router';
 
 export default class Server {
 
@@ -27,7 +28,8 @@ export default class Server {
     }
 
     private _endPoints = (): void => {
-        this._app.use('/api/empleados', empleadoRouter); // Declaramos a partir de aqui que todas las rutas que empiecen con /api/empleados serán manejadas por el empleadoRouter.
+        this._app.use('/api/empleados', empleadoRouter);
+        this._app.use('/api/usuarios', usuarioRouter ) // Declaramos a partir de aqui que todas las rutas que empiecen con /api/empleados serán manejadas por el empleadoRouter.
     }
 
     private _middlewares = (): void => {

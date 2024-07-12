@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const empleado_router_1 = __importDefault(require("../routers/empleado.router"));
 const connection_db_1 = __importDefault(require("../db/connection.db"));
+const usuario_router_1 = __importDefault(require("../routers/usuario.router"));
 class Server {
     constructor() {
         this._initServer = () => {
@@ -14,7 +15,8 @@ class Server {
             });
         };
         this._endPoints = () => {
-            this._app.use('/api/empleados', empleado_router_1.default); // Declaramos a partir de aqui que todas las rutas que empiecen con /api/empleados serán manejadas por el empleadoRouter.
+            this._app.use('/api/empleados', empleado_router_1.default);
+            this._app.use('/api/usuarios', usuario_router_1.default); // Declaramos a partir de aqui que todas las rutas que empiecen con /api/empleados serán manejadas por el empleadoRouter.
         };
         this._middlewares = () => {
             this._app.use(express_1.default.json());

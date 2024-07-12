@@ -1,39 +1,22 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const sequelize_1 = require("sequelize");
-const connection_db_1 = __importDefault(require("../db/connection.db"));
-const connection = new connection_db_1.default();
-const sequelize = connection._sequelizeConnection;
-class Empleado extends sequelize_1.Model {
-}
-exports.default = Empleado;
-Empleado.init({
-    id_empleado: {
-        type: sequelize_1.DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    nombre: {
-        type: sequelize_1.DataTypes.STRING
-    },
-    correo: {
-        type: sequelize_1.DataTypes.STRING
-    },
-    departamento: {
-        type: sequelize_1.DataTypes.STRING
-    },
-    telefono: {
-        type: sequelize_1.DataTypes.STRING
-    },
-}, {
-    sequelize,
-    modelName: 'Empleado',
-    tableName: 'Empleados', // Especifica el nombre de la tabla manualmente ('empleados')
-    freezeTableName: true, // Evitamos la pluralización automática
-    timestamps: false,
-    createdAt: false
-});
-// console.log('Estado', Empleado === sequelize.models.Empleado); // true
+// import { DataTypes, Model, Sequelize } from "sequelize";
+// import Connection from "../db/connection.db";
+// const connection = new Connection();
+// const sequelize = connection._sequelizeConnection;
+// export default class Empleado extends Model { }
+// Empleado.init({
+//     id_empleado: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+//     nombre: { type: DataTypes.STRING },
+//     correo: { type: DataTypes.STRING },
+//     departamento: { type: DataTypes.STRING },
+//     telefono: { type: DataTypes.STRING },
+//    }, 
+//    {
+//     sequelize,
+//     tableName: 'Empleados',  // Especifica el nombre de la tabla manualmente ('empleados')
+//     freezeTableName: true,   // Evitamos la pluralización automática
+//     timestamps: false,
+//     createdAt: false
+//    }
+// )
+// // console.log('Estado', Empleado === sequelize.models.Empleado); // true
